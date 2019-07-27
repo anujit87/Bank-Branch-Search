@@ -33,7 +33,6 @@ import { BankDetailsComponent } from './components/bank-details/bank-details.com
   ],
   providers: [
     CacheService,
-    {provide:Cache,useClass:CacheService},
     {provide:HTTP_INTERCEPTORS,useClass:HttpIntercept,multi:true}
   ],
   bootstrap: [AppComponent]
