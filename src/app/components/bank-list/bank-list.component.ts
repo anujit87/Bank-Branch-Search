@@ -45,6 +45,7 @@ export class BankListComponent implements OnInit, OnChanges {
       }else{
         this.bankList=[];
         this.totalBanks=0;
+        this.setPaginatedBankList();
       }
     }
   }
