@@ -9,7 +9,7 @@
       </div>
         <p class="lead card-subtitle">{{bank.branch}}</p>
         <p class="card-text small">{{bank.district}}</p>
-        <button class="btn btn-primary btn-sm" (click)="markAsFavourite(bank)"><i class="far fa-star text-light" ></i>  {{bank.isFavourite?'Unmark':'Mark'}} as Favorite</button>
+        <button class="btn btn-primary btn-sm" (click)="markAsFavourite(bank)" *ngIf="!showFavs"><i class="far fa-star text-light" ></i>  {{bank.isFavourite?'Unmark':'Mark'}} as Favorite</button>
       </div>
     </div>
   </div>
