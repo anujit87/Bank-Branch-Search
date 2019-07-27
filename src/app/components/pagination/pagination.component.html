@@ -1,0 +1,27 @@
+<div class="container" *ngIf="pages.length>1">
+  <div class="row justify-content d-flex">
+    <div class="col-sm-2">
+      <label for="">Page Size:</label>
+      <select (change)="setPageSize($event)" class="form-control form-control-sm" [value]="itemsPerPage">
+        <option *ngFor="let item of pageSizeSelector" [value]="item">{{item}}</option>
+      </select>
+    </div>
+  <nav aria-label="Page navigation example" class="mt-5 col-sm-9" >
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" (click)="setPrevPage()" aria-label="Previous">
+            <span aria-hidden="true">&laquo; Prev</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item" *ngFor="let page of pages" [ngClass]="page===currentPage?'active':''"><a class="page-link"  (click)="setPage(page)">{{page}}</a></li>
+        <li class="page-item">
+          <a class="page-link" aria-label="Next" (click)="setNextPage()" >
+            <span aria-hidden="true">Next &raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

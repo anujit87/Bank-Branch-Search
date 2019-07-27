@@ -1,0 +1,29 @@
+<div class="container mt-4 ">
+  <div class="card mt-4 mb-4 bg-light">
+    <div class="card-body">
+      <form [formGroup]="searchForm" (submit)="onSubmit()">
+        <div class="row">
+          <div class="col-sm-5">
+            <div class="form-group">
+              <label class="text-secondary"><i class="fas fa-map-marker-alt"></i> Location</label>
+              <div class="input-group">
+                <select formControlName="city" (change)="changeCity($event)" class="form-control form-control-sm">
+                  <option *ngFor="let location of locations"  [value]="location">{{location}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-7">
+            <div class="form-group">
+              <label class="text-secondary"><i class="fas fa-search"></i> Searching for...</label>
+              <div class="input-group"> 
+                <input type="text" (keyup)="searchBranch($event)" formControlName="searchText" class="form-control form-control-sm" placeholder="Search for banks">
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <button class="btn btn-warning btn-sm" (click)="showFavs=!showFavs">{{showFavs?'Go Back':'View Favourites'}}</button>
+    </div>
+  </div>
+  <app-bank-list [location]="selectedCity" [searchStr]="searchString" [showFavs]="showFavs"></app-bank-list>

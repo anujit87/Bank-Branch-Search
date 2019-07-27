@@ -1,0 +1,28 @@
+<div *ngIf="!isloading && finalbankList.length>0">
+  <div class="row">
+  <div class="col-sm-6 " *ngFor="let bank of finalbankList ">
+    <div class="card shadow-sm mb-3 p-3 bg-white rounded">
+      <div class="card-body">
+        <div class="justify-content-between d-flex">
+        <h5 class="card-title"> <a [routerLink]="['/banks',bank.ifsc]" [queryParams]="{city:location}" style="text-decoration: none">{{bank.bank_name}}</a> </h5>
+        <a href="#" class="btn btn-circle btn-warning " *ngIf="bank.isFavourite"><i class="fas fa-star text-light" ></i></a>
+      </div>
+        <p class="lead card-subtitle">{{bank.branch}}</p>
+        <p class="card-text small">{{bank.district}}</p>
+        <button class="btn btn-primary btn-sm" (click)="markAsFavourite(bank)"><i class="far fa-star text-light" ></i>  {{bank.isFavourite?'Unmark':'Mark'}} as Favorite</button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-pagination [total]="totalBanks" [currentPage]="pageNumber" [itemsPerPage]="itemsPerPage" (size)="getPageSize($event)" (pageNum)="getPageNum($event)"></app-pagination>
+</div>
+<div *ngIf="!isloading && finalbankList.length===0">
+  <div class="alert alert-danger" role="alert">
+    No Results found for the given criteria 
+  </div>
+</div>
+<div class="d-flex justify-content-center" *ngIf="isloading">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
