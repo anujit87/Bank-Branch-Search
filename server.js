@@ -3,7 +3,7 @@ const path = require('path');
 
 const app = express();
 
-app.use(express.static(__dirname + '/dist/<name-of-app>'));
+app.use(express.static(__dirname + '/dist/bank-search-app'));
 
 app.get('/*', function(req,res) {
     
